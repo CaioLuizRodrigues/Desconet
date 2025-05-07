@@ -37,7 +37,7 @@ export default function Welcome() {
 
       signInWithCredential(auth, credential)
         .then(() => {
-          console.log("✅ Login com Google bem-sucedido!");
+          console.log("✅ Login com Google bem-sucedido!", auth.currentUser);
           navigation.navigate("Login"); 
         })
         .catch((err) => {
