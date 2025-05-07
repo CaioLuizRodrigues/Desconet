@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-=======
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
->>>>>>> d49e623 (feat: integração  Google via Firebase autenticacao)
 
 const firebaseConfig = {
   apiKey: "AIzaSyBm9nzBFXe5X6_MM7FmvLvUh5avvT6hE44",
@@ -15,15 +10,10 @@ const firebaseConfig = {
   appId: "1:799067158158:android:bfd4345f8d57beb656bbdf"
 };
 
-<<<<<<< HEAD
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-=======
 if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig); 
 }
 
 const auth = firebase.auth();
->>>>>>> d49e623 (feat: integração  Google via Firebase autenticacao)
 
 export { auth };
