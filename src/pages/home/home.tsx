@@ -14,9 +14,7 @@ export default function HomeScreen() {
   return (
     <ScrollView className="flex-1 bg-white">
 
-      {/* TOPO AZUL COM CABEÇALHO */}
       <View className="bg-blue-500 rounded-b-3xl px-4 pt-12 pb-6">
-        {/* Linha com ícone de menu e campo de busca */}
         <View className="flex-row items-center">
           <TouchableOpacity>
             <Feather name="menu" size={24} color="white" />
@@ -29,16 +27,13 @@ export default function HomeScreen() {
           />
         </View>
 
-        {/* Saudação */}
         <Text className="text-white text-right mt-2 text-base font-semibold">
           Olá, <Text className="text-white font-bold">Luizinho</Text>
         </Text>
       </View>
 
-      {/* CONTEÚDO PRINCIPAL */}
       <View className="px-4 mt-6">
 
-        {/* Conexões */}
         <Text className="text-xl font-semibold mb-2">Conexões</Text>
         <View className="flex-row gap-3">
           {conexoes.map((pessoa) => (
@@ -56,7 +51,6 @@ export default function HomeScreen() {
           ))}
         </View>
 
-        {/* Dicas do dia */}
         <Text className="text-xl font-semibold mt-8 mb-2">Dicas do dia</Text>
         {['Faça um passeio com seu pet', 'Leia um capítulo do seu livro', 'Faça uma corrida matinal'].map((dica, i) => (
           <TouchableOpacity key={i} className="bg-blue-500 rounded-xl py-3 px-4 my-1">
@@ -64,13 +58,11 @@ export default function HomeScreen() {
           </TouchableOpacity>
         ))}
 
-        {/* Tempo offline */}
         <TouchableOpacity className="bg-gray-100 rounded-xl py-4 px-4 mt-6">
           <Text className="text-black font-bold mb-1">Acompanhe seu tempo offline</Text>
           <Text className="text-blue-600 font-bold">10 horas</Text>
         </TouchableOpacity>
 
-        {/* Botões inferiores */}
         <View className="flex-row justify-center items-center gap-6 mt-10 mb-10">
           <TouchableOpacity className="bg-blue-500 p-4 rounded-full">
             <FontAwesome name="users" size={24} color="white" />
