@@ -12,12 +12,12 @@ const App = () => {
 
   return (
     //<NavigationContainer>
-     // <StatusBar  backgroundColor='#5e17eb' barStyle='light-content'/>
-     // <Routes/> 
+      //<StatusBar  backgroundColor='#5e17eb' barStyle='light-content'/>
+      //<Routes/> 
     //</NavigationContainer>
-
+    <NavigationContainer>
       <Profile/>
-
+    </NavigationContainer>
   );
 };
 

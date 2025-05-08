@@ -18,7 +18,7 @@ export default function Login() {
         <Image source={require('../../assets/img/Logo.png')} className="w-full h-36 top-10" resizeMode="cover"></Image>
         <Text className="color-blue-500 font-bold text-4xl top-10">Login</Text>
       </View>
-      <View style={{ flex:2 }} className="w-full bg-white flex justify-center items-center px-4 gap-6">
+      <View style={{ flex:2 }} className="w-full bg-white flex justify-center items-center px-4 gap-7">
         <View className="w-full items-start justify-center relative">
         <TextInput
           className="w-full border border-blue-500 px-4 rounded-xl bg-white h-11"
