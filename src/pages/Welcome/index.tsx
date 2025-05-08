@@ -75,7 +75,7 @@ export default function Welcome() {
           <Text>Login com o Google</Text>
         </TouchableOpacity>
 
-      </View>
+      </View> 
     </View>
   );
 }
