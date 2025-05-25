@@ -11,6 +11,7 @@
   "dependencies": {
     "@expo/metro-runtime": "~5.0.4",
     "@react-navigation/bottom-tabs": "^7.3.10",
+    "@react-navigation/material-top-tabs": "^7.2.12",
     "@react-navigation/native": "^7.1.6",
     "@react-navigation/native-stack": "^7.3.10",
     "expo": "~53.0.5",
@@ -24,6 +25,7 @@
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.10.0",
+    "react-native-tab-view": "^4.0.12",
     "react-native-web": "^0.20.0",
     "tailwindcss": "3.4.17"
   },

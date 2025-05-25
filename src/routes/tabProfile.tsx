@@ -1,7 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StyleSheet, SafeAreaView } from 'react-native';
-
-
+import { StyleSheet, SafeAreaView } from "react-native";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import Tarefas from "../pages/Profile/tarefas";
 import Desempenho from "../pages/Profile/desempenho";
@@ -11,23 +10,19 @@ export type RootStackParamList = {
   Desempenho: undefined;
 };
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Tab = createMaterialTopTabNavigator<RootStackParamList>();
 
 export default function TabProfile() {
-  return ( 
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Tarefas"
-        component={Tarefas}
-        options={{ headerShown: false }}
+  return (
+    <Tab.Navigator>
+      <Tab.Screen 
+        name="Tarefas" 
+        component={Tarefas} 
       />
 
-      <Stack.Screen
-        name="Desempenho"
-        component={Desempenho}
-        options={{ headerShown: false }}
-      />
-
-    </Stack.Navigator>
+      <Tab.Screen 
+        name="Desempenho" 
+        component={Desempenho} />
+    </Tab.Navigator>
   );
 }

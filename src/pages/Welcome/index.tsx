@@ -4,8 +4,8 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../routes";
 
-import AntDesign from '@expo/vector-icons/AntDesign';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import AntDesign from "@expo/vector-icons/AntDesign";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 import { auth } from "../../services/firebaseConfig";
 import { signInWithCredential, GoogleAuthProvider } from "firebase/auth";
@@ -14,14 +14,19 @@ import * as WebBrowser from "expo-web-browser";
 
 WebBrowser.maybeCompleteAuthSession();
 
-type NavigationProp = NativeStackNavigationProp<RootStackParamList, "Welcome">;
+type NavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Welcome",
+  "Home"
+>;
 
 export default function Welcome() {
   const navigation = useNavigation<NavigationProp>();
 
-
   const [request, response, promptAsync] = Google.useAuthRequest({
-    clientId: '799067158158-832o17e5iv5bu2424ndgeeteandihhda.apps.googleusercontent.com',
+    clientId:
+      // "799067158158-832o17e5iv5bu2424ndgeeteandihhda.apps.googleusercontent.com"
+      "799067158158-832o17e5iv5bu2424ndgeeteandihhda.apps.googleusercontent.com",
   });
 
   useEffect(() => {
@@ -37,7 +42,7 @@ export default function Welcome() {
       signInWithCredential(auth, credential)
         .then(() => {
           console.log("✅ Login com Google bem-sucedido!", auth.currentUser);
-          navigation.navigate("Login"); 
+          navigation.navigate("Home");
         })
         .catch((err) => {
           console.error("Erro ao autenticar com Firebase:", err);
@@ -46,12 +51,21 @@ export default function Welcome() {
   }, [response]);
 
   return (
-    <View style={{ flex: 1 }} >
-      <View style={{ flex: 2 }} className="w-full bg-white flex justify-center items-center px-4">
-        <Image source={require('../../assets/img/Logo.png')} className="w-full h-36" />
+    <View style={{ flex: 1 }}>
+      <View
+        style={{ flex: 2 }}
+        className="w-full bg-white flex justify-center items-center px-4"
+      >
+        <Image
+          source={require("../../assets/img/Logo.png")}
+          className="w-full h-36"
+        />
         <Text className=" color-blue-600 text-2xl">Controle Digital</Text>
       </View>
-      <View style={{ flex: 2 }} className="w-full bg-blue-500 flex justify-center items-center px-4 gap-3">
+      <View
+        style={{ flex: 2 }}
+        className="w-full bg-blue-500 flex justify-center items-center px-4 gap-3"
+      >
         <Text className="color-white font-bold text-3xl">Entrar</Text>
         <Text className="color-white font-bold text-xs">Faça seu login</Text>
 
@@ -70,12 +84,11 @@ export default function Welcome() {
           onPress={() => promptAsync()}
         >
           <View className="h-8 w-8 bg-white rounded-full flex justify-center items-center">
-            <AntDesign name="googleplus" size={24} color="#1b86ea" />
+            <AntDesign name="googleplus" size={20} color="#1b86ea" />
           </View>
           <Text>Login com o Google</Text>
         </TouchableOpacity>
-
-      </View> 
+      </View>
     </View>
   );
 }

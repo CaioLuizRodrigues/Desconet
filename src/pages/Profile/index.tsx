@@ -54,15 +54,6 @@ export default function Profile() {
             </View>
           </View>
         </View>
-        <View className="flex-row justify-around w-full ">
-          <Pressable onPress={() => {navigation.navigate("Tarefas");setSelectedTab("Tarefas");}}>
-            <Text className={`font-bold ${selectedTab === "Tarefas" ? "border-b-2 border-blue-500" : ""}`}>Tarefas</Text>
-          </Pressable>
-
-          <Pressable onPress={() => {navigation.navigate("Desempenho");setSelectedTab("Desempenho");}}>
-            <Text className={`font-bold ${selectedTab === "Desempenho" ? "border-b-2 border-blue-500" : ""}`}>Desempenho</Text>
-          </Pressable>
-        </View>
         <View className="w-max h-full ms-3 me-3 mt-3 ">
             <TabProfile />
         </View>
