@@ -20,7 +20,7 @@ export default function Profile() {
 
    
   return (
-    <View style={{ flex: 1 }} className="relative w-full">
+    <View style={{ flex: 1, paddingTop:statusBarHeight}} className="relative w-full">
       <View className="w-full ">
         <Image
           source={require("../../assets/img/Wallpaper.png")}

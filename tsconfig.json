@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["react", "react-native"],
     "target": "ESNext",
     "module": "ESNext",
     "lib": [

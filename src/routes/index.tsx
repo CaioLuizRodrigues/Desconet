@@ -5,11 +5,10 @@ import { View } from "react-native";
 import Login from "../pages/Login";
 import Welcome from "../pages/Welcome";
 import Register from "../pages/Register";
-import HomeScreen from "../pages/home/home";
 import Profile from "../pages/Profile";
-import Tarefas from "../pages/Profile/tarefas";
-import Desempenho from "../pages/Profile/desempenho";
 import Home from "../pages/home/home";
+import SearchRegister from "../pages/Register/searchRegister";
+import FilterRegister from "../pages/Register/filterRegister";
 
 export type RootStackParamList = {
   Welcome: undefined;
@@ -19,6 +18,8 @@ export type RootStackParamList = {
   Profile: undefined;
   Tarefas: undefined;
   Desempenho: undefined;
+  SearchRegister: undefined;
+  FilterRegister: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -53,6 +54,18 @@ export default function Routes() {
       <Stack.Screen
         name="Profile"
         component={Profile}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="SearchRegister"
+        component={SearchRegister}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="FilterRegister"
+        component={FilterRegister}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
