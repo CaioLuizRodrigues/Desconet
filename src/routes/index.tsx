@@ -9,6 +9,7 @@ import Profile from "../pages/Profile";
 import Home from "../pages/home/home";
 import SearchRegister from "../pages/Register/searchRegister";
 import FilterRegister from "../pages/Register/filterRegister";
+import ConnectionRegister from "../pages/Register/connectionRegister";
 
 export type RootStackParamList = {
   Welcome: undefined;
@@ -20,6 +21,7 @@ export type RootStackParamList = {
   Desempenho: undefined;
   SearchRegister: undefined;
   FilterRegister: undefined;
+  ConnectionRegister: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -66,6 +68,12 @@ export default function Routes() {
       <Stack.Screen
         name="FilterRegister"
         component={FilterRegister}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="ConnectionRegister"
+        component={ConnectionRegister}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

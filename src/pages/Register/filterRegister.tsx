@@ -6,30 +6,43 @@ import {
   Pressable,
   TextInput,
   StyleSheet,
-  FlatList 
+  FlatList,
 } from "react-native";
+import AntDesign from "@expo/vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../routes";
 import Constants from "expo-constants";
 import { useState } from "react";
 
 const statusBarHeight = Constants.statusBarHeight;
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export default function FilterRegister() {
- const items: string[] = [
-    'Academia', 'Filmes',
-    'Yoga', 'Séries',
-    'Corrida', 'Bicicleta',
-    'Parques', 'Futebol',
-    'Cinema', 'Música',
-    'Dança', 'Animais',
-    'Caminhada', 'Comer',
-    'Shows', 'Bares',
+  const navigation = useNavigation<NavigationProp>();
+
+  const items: string[] = [
+    "Academia",
+    "Filmes",
+    "Yoga",
+    "Séries",
+    "Corrida",
+    "Bicicleta",
+    "Parques",
+    "Futebol",
+    "Cinema",
+    "Música",
+    "Dança",
+    "Animais",
+    "Caminhada",
+    "Comer",
+    "Shows",
+    "Bares",
   ];
 
-const [selected, setSelected] = useState<string[]>([]);
+  const [selected, setSelected] = useState<string[]>([]);
 
-  const toggleSelect= (item: string) =>{
+  const toggleSelect = (item: string) => {
     if (selected.includes(item)) {
       setSelected(selected.filter((i) => i !== item));
     } else {
@@ -45,30 +58,42 @@ const [selected, setSelected] = useState<string[]>([]);
         </View>
       </View>
       <View style={styles.container}>
-        <Text style={styles.title}>Me conte mais sobre as atividades que você gosta.</Text>
-      <FlatList
-        data={items}
-        numColumns={2}
-        keyExtractor={(item) => item}
-        columnWrapperStyle={styles.row}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={[
-              styles.chip,
-              selected.includes(item) && styles.chipSelected,
-            ]}
-            onPress={() => toggleSelect(item)}
-          >
-            <Text style={[
-              styles.chipText,
-              selected.includes(item) && styles.chipTextSelected,
-            ]}>
-              {item}
-            </Text>
-          </TouchableOpacity>
-        )}
-        contentContainerStyle={styles.list}
-      />
+        <Text style={styles.title}>
+          Me conte mais sobre as atividades que você gosta.
+        </Text>
+        <FlatList
+          data={items}
+          numColumns={2}
+          keyExtractor={(item) => item}
+          columnWrapperStyle={styles.row}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={[
+                styles.chip,
+                selected.includes(item) && styles.chipSelected,
+              ]}
+              onPress={() => toggleSelect(item)}
+            >
+              <Text
+                style={[
+                  styles.chipText,
+                  selected.includes(item) && styles.chipTextSelected,
+                ]}
+              >
+                {item}
+              </Text>
+            </TouchableOpacity>
+          )}
+          contentContainerStyle={styles.list}
+        />
+      </View>
+
+      <View className="w-full bg-white flex justify-center items-end px-4 gap-20">
+        <TouchableOpacity onPress={() => navigation.navigate("ConnectionRegister")}>
+          <View className="h-16 w-16 bg-blue-500 rounded-full flex justify-center items-center">
+            <AntDesign name="arrowright" size={24} color="white" />
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -79,47 +104,47 @@ const styles = StyleSheet.create({
     flex: 2,
     paddingTop: 50,
     paddingLeft: 30,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     display: "flex",
     alignItems: "flex-start",
-    justifyContent: 'flex-start'
+    justifyContent: "flex-start",
   },
   title: {
     fontSize: 20,
-    textAlign: 'center',
-    color: '#007AFF',
-    fontWeight: '600',
+    textAlign: "center",
+    color: "#007AFF",
+    fontWeight: "600",
     marginBottom: 20,
   },
   list: {
     paddingHorizontal: 20,
   },
   row: {
-    display:'flex',
-    justifyContent: 'space-evenly',
+    display: "flex",
+    justifyContent: "space-evenly",
     marginBottom: 12,
   },
   chip: {
-    backgroundColor: '#F2F2F2',
+    backgroundColor: "#F2F2F2",
     paddingVertical: 10,
     paddingHorizontal: 18,
     borderRadius: 30,
     borderWidth: 1.5,
-    borderColor: '#F2F2F2',
+    borderColor: "#F2F2F2",
     minWidth: 120,
-    alignItems: 'center',
+    alignItems: "center",
   },
   chipSelected: {
-    backgroundColor: '#007AFF20',
-    borderColor: '#007AFF',
+    backgroundColor: "#007AFF20",
+    borderColor: "#007AFF",
   },
   chipText: {
-    color: '#333',
+    color: "#333",
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   chipTextSelected: {
-    color: '#007AFF',
-    fontWeight: '600',
+    color: "#007AFF",
+    fontWeight: "600",
   },
 });

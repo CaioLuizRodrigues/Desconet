@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image, Pressable,TextInput} from "react-native";
+import { View, Text, TouchableOpacity, Image, Pressable,TextInput, StyleSheet} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../routes";
@@ -10,77 +10,135 @@ const statusBarHeight = Constants.statusBarHeight;
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 export default function Register() {
-      const navigation = useNavigation<NavigationProp>();
+  const navigation = useNavigation<NavigationProp>();
 
- return (
-   <View style={{ flex: 1, paddingTop:statusBarHeight }} >
-    <View className="bg-white w-full ">
-      <View className="bg-blue-500 w-2/4 h-24 justify-center items-center rounded-br-full ">
-        <Text className="color-white font-bold text-4xl">Cadastro</Text>
+  const renderInput = (label: string) => (
+  <View style={styles.inputWrapper}>
+    <TextInput
+      placeholderTextColor="black"
+      style={styles.input}
+      keyboardType="email-address"
+    />
+    <View style={styles.labelWrapper}>
+      <Text style={styles.label}>{label}</Text>
+    </View>
+  </View>
+);
+
+
+  return (
+    <View style={[styles.container]}>
+      <View style={styles.headerContainer}>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Cadastro</Text>
+        </View>
+      </View>
+
+
+      <View style={styles.formContainer}>
+        <View style={styles.inputsArea}>
+          {renderInput("Nome")}
+          {renderInput("E-mail")}
+          {renderInput("Senha")}
+          {renderInput("Confirmar senha")}
+          {renderInput("Data de nascimento")}
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("SearchRegister")}
+          >
+            <View style={styles.button}>
+              <AntDesign name="arrowright" size={24} color="white" />
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
-    <View style={{ flex: 2 }} className="w-full h-full bg-white flex justify-center items-center">
-      <View className="w-full h-4/6 bg-white flex justify-center items-center px-4 gap-20 bottom-16">
-        <View className="w-full items-start justify-center relative">
-          <TextInput
-            className="w-full border border-blue-500 px-4 rounded-xl bg-white h-11"
-            keyboardType="email-address"
-            placeholderTextColor="black"
-          ></TextInput>
-          <View className="px-10 ms-5 absolute bottom-10 rounded-xl py-1 bg-white">
-            <Text className="color-blue-500">Nome</Text>
-          </View>
-        </View>
-                <View className="w-full items-start justify-center relative">
-          <TextInput
-            className="w-full border border-blue-500 px-4 rounded-xl bg-white h-11"
-            keyboardType="email-address"
-            placeholderTextColor="black"
-          ></TextInput>
-          <View className="px-10 ms-5 absolute bottom-10 rounded-xl py-1 bg-white">
-            <Text className="color-blue-500">E-mail</Text>
-          </View>
-        </View>
-                <View className="w-full items-start justify-center relative">
-          <TextInput
-            className="w-full border border-blue-500 px-4 rounded-xl bg-white h-11"
-            keyboardType="email-address"
-            placeholderTextColor="black"
-          ></TextInput>
-          <View className="px-10 ms-5 absolute bottom-10 rounded-xl py-1 bg-white">
-            <Text className="color-blue-500">Senha</Text>
-          </View>
-        </View>
-                <View className="w-full items-start justify-center relative">
-          <TextInput
-            className="w-full border border-blue-500 px-4 rounded-xl bg-white h-11"
-            keyboardType="email-address"
-            placeholderTextColor="black"
-          ></TextInput>
-          <View className="px-10 ms-5 absolute bottom-10 rounded-xl py-1 bg-white">
-            <Text className="color-blue-500">Confirmar senha</Text>
-          </View>
-        </View>
-        <View className="w-full items-start justify-center relative">
-          <TextInput
-            className="w-full border border-blue-500 px-4 rounded-xl bg-white h-11"
-            keyboardType="email-address"
-            placeholderTextColor="black"
-          ></TextInput>
-          <View className="px-10 ms-5 absolute bottom-10 rounded-xl py-1 bg-white">
-            <Text className="color-blue-500">Data de nascimento</Text>
-          </View>
-        </View>
-        </View>
-      <View className="w-full bg-white flex justify-center items-end px-4 gap-20" >
-        <TouchableOpacity onPress={() => navigation.navigate("SearchRegister")}>
-          <View className="h-16 w-16 bg-blue-500 rounded-full flex justify-center items-center">
-            <AntDesign name="arrowright" size={24} color="white"/>
-          </View>
-        </TouchableOpacity>
-      </View>
-    </View>
-
-   </View>
   );
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    paddingTop:statusBarHeight
+  },
+  headerContainer: {
+    width: "100%",
+    backgroundColor: "#fff",
+  },
+  header: {
+    backgroundColor: "#3B82F6",
+    width: "50%",
+    height: 96,
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottomRightRadius: 9999,
+  },
+  headerText: {
+    color: "#fff",
+    fontSize: 32,
+    fontWeight: "bold",
+  },
+  formContainer: {
+    flex: 2,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
+  inputsArea: {
+    width: "100%",
+    height: "70%",
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 16,
+    gap: 30,
+    bottom: 16,
+  },
+  inputWrapper: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    position: "relative",
+  },
+  input: {
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "#3B82F6",
+    borderRadius: 12,
+    backgroundColor: "#fff",
+    height: 44,
+    paddingHorizontal: 16,
+    color: "#000",
+  },
+  labelWrapper: {
+    position: "absolute",
+    bottom: 44,
+    left: 20,
+    backgroundColor: "#fff",
+    paddingHorizontal: 10,
+    paddingVertical: 2,
+    borderRadius: 8,
+  },
+  label: {
+    color: "#3B82F6",
+  },
+  buttonContainer: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "flex-end",
+    paddingHorizontal: 16,
+  },
+  button: {
+    height: 64,
+    width: 64,
+    backgroundColor: "#3B82F6",
+    borderRadius: 9999,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
